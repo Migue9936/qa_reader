@@ -11,8 +11,8 @@ class FloatingNavigationButtom extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () async {
+          // ignore: unused_local_variable
           String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode('#FFC107','Cancel ', false,ScanMode.QR);
-          print(barcodeScanRes);
       },
       child: const Icon(Icons.qr_code_scanner_rounded),
       );

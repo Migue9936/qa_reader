@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qa_reader/models/scan_model.dart';
+import 'package:qa_reader/providers/db_provider.dart';
 import 'package:qa_reader/providers/providers.dart';
 import 'package:qa_reader/screens/screens.dart';
 import 'package:qa_reader/widgets/widgets.dart';
@@ -40,6 +42,7 @@ class _HomePageBody extends StatelessWidget {
 
     final currentIndex = uiProvider.selectedMenuOpt;
 
+
     switch (currentIndex) {
       case 0:
         return const MapsScreen();
@@ -50,4 +53,6 @@ class _HomePageBody extends StatelessWidget {
     }
     
   }
+
+
 }
