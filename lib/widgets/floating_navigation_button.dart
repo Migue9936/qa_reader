@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:provider/provider.dart';
+import 'package:qa_reader/providers/providers.dart';
+import 'package:qa_reader/utils/url_luncher.dart';
 
 class FloatingNavigationButtom extends StatelessWidget {
 
@@ -12,9 +14,22 @@ class FloatingNavigationButtom extends StatelessWidget {
     return FloatingActionButton(
       onPressed: () async {
           // ignore: unused_local_variable
-          String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode('#FFC107','Cancel ', false,ScanMode.QR);
+          // String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode('#FFC107','Cancel ', false,ScanMode.QR);
+          
+          final  barcodeScanRes = 'geo:4.635886,-74.125416';
+          if (barcodeScanRes=='-1') {
+            return;
+          }
+          // String barcodeScanRes = 'https://fernando-herrera.com';
+          final scanListProvider = Provider.of<ScanListProvider>(context,listen: false);
+
+          final newScan= await scanListProvider.newScan(barcodeScanRes);
+          // ignore: use_build_context_synchronously
+          urlLuncher(context,newScan);
       },
       child: const Icon(Icons.qr_code_scanner_rounded),
+
+      
       );
   }
 }

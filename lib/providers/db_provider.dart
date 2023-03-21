@@ -70,7 +70,7 @@ class DBProvider {
 
      Future<List<ScanModel>?> getScanByType(String type) async {
       final db = await database;
-      final res = await db!.rawQuery('''SELECT * FROM Scans WHERE type = $type''');
+      final res = await db!.rawQuery('''SELECT * FROM Scans WHERE type = "$type"''');
   
       return res.isNotEmpty ? res.map((e) => ScanModel.fromJson(e)).toList() : null;
     }
