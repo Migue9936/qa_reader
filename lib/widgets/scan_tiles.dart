@@ -14,7 +14,19 @@ class  ScanTiles extends StatelessWidget {
     final scansListProvider = Provider.of<ScanListProvider>(context);
     final scans = scansListProvider.scans;
 
-    return    Padding(
+    return scans.isEmpty
+    ? Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.qr_code_scanner, size: 60),
+            SizedBox(height: 16),
+            Text('Por favor, escanear', style: TextStyle(fontSize: 20)),
+          ],
+        ),
+      )
+
+    : Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView.builder(
           itemCount:scans.length ,
