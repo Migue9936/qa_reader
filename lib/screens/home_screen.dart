@@ -52,13 +52,21 @@ class _HomePageBody extends StatelessWidget {
 
     switch (currentIndex) {
       case 0:
-      scanListProvider.getScansByType('geo');
-        return const MapsScreen();
+        scanListProvider.getScansByType('geo');
+        return Consumer<ScanListProvider>(
+          builder: (context, scanListProvider, _) => scanListProvider.isLoading
+              ? const Center() // Muestra un CircularProgressIndicator mientras se carga la lista de exploraciones
+              : const MapsScreen(),
+        );
       case 1:
-      scanListProvider.getScansByType('http');
-        return const AdressesScreen();
+        scanListProvider.getScansByType('http');
+        return Consumer<ScanListProvider>(
+          builder: (context, scanListProvider, _) => scanListProvider.isLoading
+              ? const Center() // Muestra un CircularProgressIndicator mientras se carga la lista de exploraciones
+              : const AdressesScreen(),
+        );
       default:
-      return const MapsScreen();
+        return const MapsScreen();
     }
     
   }

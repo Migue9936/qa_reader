@@ -20,12 +20,14 @@ class FloatingNavigationButtom extends StatelessWidget {
           if (barcodeScanRes=='-1') {
             return;
           }
-          // String barcodeScanRes = 'https://fernando-herrera.com';
+           final barcodeScanRes1 = 'https://fernando-herrera.com';
           final scanListProvider = Provider.of<ScanListProvider>(context,listen: false);
 
           final newScan= await scanListProvider.newScan(barcodeScanRes);
+          //final newScan1= await scanListProvider.newScan(barcodeScanRes1);
+          
           // ignore: use_build_context_synchronously
-          urlLuncher(context,newScan);
+           urlLuncher(context,newScan);
       },
       child: const Icon(Icons.qr_code_scanner_rounded),
 

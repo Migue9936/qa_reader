@@ -5,6 +5,8 @@ class ScanListProvider extends ChangeNotifier{
   
   List<ScanModel> scans = [];
 
+  bool isLoading = false;
+
   String selectedType= 'http';
 
   Future<ScanModel> newScan(String value) async {
@@ -27,10 +29,19 @@ class ScanListProvider extends ChangeNotifier{
   }
 
   getScansByType(String type) async{
-    final scans  = await DBProvider.db.getScanByType(type);
-    this.scans = [...scans!];
-    selectedType = type;
-    notifyListeners();
+    isLoading = true; // Establece isLoading en true al obtener la lista 
+    var scans = await DBProvider.db.getScanByType(type);
+    isLoading = false; // Establece isLoading en false después de obtener la lista
+    if (scans?.isNotEmpty ?? false) { // Verifica si scans es nulo o vacío
+        debugPrint('sisas');
+        this.scans = [...?scans];
+        
+    } else {
+        debugPrint('nosas');
+        this.scans = []; // Asigna una lista vacía a scans
+      }
+        selectedType = type;
+        notifyListeners();
 
   }
 

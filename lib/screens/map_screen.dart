@@ -14,6 +14,8 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
 
+  MapType mapType= MapType.normal;
+
    final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
   @override
@@ -61,7 +63,7 @@ class _MapScreenState extends State<MapScreen> {
         compassEnabled: true,
         mapToolbarEnabled: true,
         markers: markers,
-        mapType: MapType.normal,
+        mapType: mapType,
         zoomControlsEnabled: false,
         initialCameraPosition: initialPoint,
         onMapCreated: (GoogleMapController controller) {
@@ -71,7 +73,14 @@ class _MapScreenState extends State<MapScreen> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.layers_outlined),
         onPressed: () {
-          
+          setState(() {
+            if (mapType == MapType.normal) {
+            mapType = MapType.satellite;
+          }
+          else{
+            mapType = MapType.normal;
+          }  
+          });
         },),
     );
   }

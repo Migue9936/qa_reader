@@ -20,7 +20,7 @@ class  ScanTiles extends StatelessWidget {
           itemCount:scans.length ,
           itemBuilder: (_, i) {
           return Dismissible(
-            key: UniqueKey(),
+            key: Key(scans[i].id.toString()),
             background: Container(color: Colors.redAccent,),
             onDismissed: (direction) {
               Provider.of<ScanListProvider>(context,listen: false).deleteScanById(scans[i].id!);
