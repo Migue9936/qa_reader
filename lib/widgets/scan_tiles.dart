@@ -18,7 +18,7 @@ class  ScanTiles extends StatelessWidget {
     ? Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const[
             Icon(Icons.qr_code_scanner, size: 60),
             SizedBox(height: 16),
             Text('Por favor, escanear', style: TextStyle(fontSize: 20)),
