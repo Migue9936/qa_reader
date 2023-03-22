@@ -12,6 +12,6 @@ class AdressesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
 
-    return  const ScanTiles(type: 'geo');
+    return  const ScanTiles(type: 'http');
   }
 }

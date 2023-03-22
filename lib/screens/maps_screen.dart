@@ -10,6 +10,6 @@ class MapsScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return  const ScanTiles(type: 'http');
+    return  const ScanTiles(type: 'geo');
   }
 }
